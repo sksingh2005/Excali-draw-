@@ -98,11 +98,12 @@ const DrawingPage = () => {
   const [linkCopied, setLinkCopied] = useState(false);
   const [currentRoomId, setCurrentRoomId] = useState<string | null>(roomId || null);
 
+  const baseUrl='https://excali-draw.onrender.com'
   // Initialize socket connection
   useEffect(() => {
     if (currentRoomId) {
       console.log('Connecting to room:', currentRoomId);
-      socketRef.current = io('http://localhost:5000');
+      socketRef.current = io(baseUrl);
       
       socketRef.current.on('connect', () => {
         console.log('Socket connected');
@@ -182,7 +183,7 @@ const DrawingPage = () => {
   // Create new room
   const createRoom = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/rooms', {
+      const response = await fetch(`${baseUrl}/api/rooms`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       });

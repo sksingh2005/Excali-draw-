@@ -8,7 +8,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://excali-draw-theta.vercel.app/", // React app URL
+    origin: "https://excali-draw-theta.vercel.app", // React app URL
     methods: ["GET", "POST"]
   }
 });
